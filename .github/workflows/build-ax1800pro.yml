@@ -115,13 +115,13 @@ jobs:
             libmpfr-dev libmpc-dev libelf-dev zstd
           sudo apt-get clean
 
-      - name: 更新/安装 Feeds
+      - name: Update and Install Feeds
         run: |
-          ./scripts/feeds update -a
-          ./scripts/feeds install -a
-          echo "::group::store feed（iStore 应用商店本体）是否已注册"
-          ./scripts/feeds list -n 2>/dev/null | grep -qE "luci-app-store|taskd" || echo "store feed no found"
-          echo "::endgroup::"   
+         ./scripts/feeds update -a
+         ./scripts/feeds install -a
+         echo "::group::Check store feed"
+         ./scripts/feeds list -n 2>/dev/null | grep -qE "luci-app-store|taskd" || echo "Warning: store feed not found"
+         echo "::endgroup::"
           
       - name: 生成 seed 配置 (Generate .config)
         run: |
