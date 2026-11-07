@@ -118,7 +118,7 @@ jobs:
       - name: Update and Install Feeds
         run: |
          ./scripts/feeds update -a
-         ./scripts/feeds install -a"
+         ./scripts/feeds install -a
           
       - name: 生成 seed 配置 (Generate .config)
         run: |
