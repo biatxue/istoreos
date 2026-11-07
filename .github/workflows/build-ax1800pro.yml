@@ -121,8 +121,7 @@ jobs:
           ./scripts/feeds install -a
           echo "::group::store feed（iStore 应用商店本体）是否已注册"
           ./scripts/feeds list -n 2>/dev/null | grep -E '^(luci-app-store|taskd|luci-lib-taskd|luci-lib-xterm)$' ||  echo "警告：store feed 中的包未列出"
-          echo "::endgroup::"
-          
+          echo "::endgroup::"    
       - name: 生成 seed 配置 (Generate .config)
         run: |
           # 说明：
