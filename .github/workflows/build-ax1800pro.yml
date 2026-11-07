@@ -314,6 +314,18 @@ jobs:
           CONFIG_PACKAGE_kmod-nf-socket=y
           CONFIG_PACKAGE_kmod-nf-tproxy=y
           CONFIG_PACKAGE_yq=y
+          CONFIG_PACKAGE_kmod-nfnetlink=y
+          CONFIG_PACKAGE_kmod-nf-conntrack-netlink=y
+          # 确保高通无线驱动和固件被打包
+          CONFIG_PACKAGE_ath11k-firmware-ipq6018=y
+          CONFIG_PACKAGE_kmod-ath11k=y
+          CONFIG_PACKAGE_kmod-ath11k-ahb=y
+
+          # 确保 LuCI 界面有无线设置选项
+          CONFIG_PACKAGE_luci-app-wifi=y
+
+          # 确保默认无线状态为开启（OpenWrt 默认通常是开启的）
+          CONFIG_WIFI_ON_BOOT=y
           EOF
 
       - name: 展开默认配置并校验机型 (defconfig + verify)
